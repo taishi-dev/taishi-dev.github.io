@@ -3,324 +3,410 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Taishi Higo</title>
-<meta name="description" content="Taishi Higo — Computer Engineering student and full-stack engineer. Real-time systems, AI integration, and full-stack development." />
+<title>Taishi Higo — Real-time systems engineer</title>
+<meta name="description" content="Taishi Higo — Computer Engineering student and full-stack engineer. Real-time graphics, computer vision, and AI integration, tuned until they run." />
 <meta name="author" content="Taishi Higo" />
 <meta property="og:title" content="Taishi Higo" />
-<meta property="og:description" content="Computer Engineering student & full-stack engineer — real-time systems, AI integration, full-stack." />
+<meta property="og:description" content="Real-time graphics, computer vision, and AI integration — built end to end and tuned until they run." />
 <meta property="og:type" content="website" />
-<meta name="theme-color" content="#ffffff" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#e7eaec" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23e0481f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3ETH%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Semi+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#ffffff; --bg-soft:#f7f8fa; --card:#ffffff;
-    --text:#1f2328; --muted:#5b6470; --faint:#8b939d;
-    --border:#e6e8ec; --border-strong:#d7dbe0;
-    --accent:#2563eb; --accent-soft:rgba(37,99,235,.08);
-    --shadow:0 1px 2px rgba(20,30,50,.04), 0 8px 24px -12px rgba(20,30,50,.10);
-    --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    --serif:'Newsreader',Georgia,'Times New Roman',serif;
-    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --ground:#e7eaec; --surface:#f4f6f7; --card:#ffffff;
+    --text:#15181b; --muted:#565e66; --faint:#8a929b;
+    --line:#d2d7dc; --line-2:#c2c8ce;
+    --accent:#e0481f; --accent-soft:rgba(224,72,31,.10);
+    --display:'Saira Semi Condensed','Arial Narrow',sans-serif;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
   }
   [data-theme="dark"]{
-    --bg:#0d1117; --bg-soft:#161b22; --card:#11161d;
-    --text:#e7edf3; --muted:#9aa4b1; --faint:#6e7681;
-    --border:#222a33; --border-strong:#2c343d;
-    --accent:#5aa2ff; --accent-soft:rgba(90,162,255,.12);
-    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -16px rgba(0,0,0,.6);
+    --ground:#11151a; --surface:#161b22; --card:#141a21;
+    --text:#e9eced; --muted:#9aa3ad; --faint:#6b747d;
+    --line:#262d35; --line-2:#323a43;
+    --accent:#f2582c; --accent-soft:rgba(242,88,44,.14);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:80px}
-  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;
+  html{scroll-behavior:smooth;scroll-padding-top:78px}
+  body{background:var(--ground);color:var(--text);font-family:var(--sans);line-height:1.6;
     -webkit-font-smoothing:antialiased;font-size:16px;transition:background .3s,color .3s}
-  ::selection{background:var(--accent-soft)}
+  ::selection{background:var(--accent);color:#fff}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
   img{max-width:100%;display:block}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
 
-  /* masthead */
-  .masthead{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);
-    backdrop-filter:saturate(180%) blur(10px);-webkit-backdrop-filter:saturate(180%) blur(10px);
-    border-bottom:1px solid var(--border)}
-  .masthead .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:60px;display:flex;align-items:center;justify-content:space-between}
-  .brand{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--text);letter-spacing:.2px}
-  .brand:hover{text-decoration:none;color:var(--accent)}
-  .mast-nav{display:flex;align-items:center;gap:24px}
-  .mast-nav a{color:var(--muted);font-size:14.5px;font-weight:500}
-  .mast-nav a:hover{color:var(--accent);text-decoration:none}
-  .theme-btn{background:none;border:1px solid var(--border-strong);color:var(--muted);width:36px;height:34px;border-radius:8px;cursor:pointer;display:grid;place-items:center;transition:.2s}
-  .theme-btn:hover{color:var(--accent);border-color:var(--accent)}
-  .theme-btn svg{width:17px;height:17px}
-  .menu-btn{display:none;background:none;border:1px solid var(--border-strong);border-radius:8px;color:var(--text);width:38px;height:34px;font-size:17px;cursor:pointer}
-  @media(max-width:820px){
-    .mast-nav .links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--border);padding:6px 0}
-    .mast-nav .links.open{display:flex}
-    .mast-nav .links a{padding:12px 26px}
-    .menu-btn{display:block}
-    .mast-nav{gap:12px}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 26px}
+
+  /* crop / registration marks */
+  .frame{position:relative}
+  .cm{position:absolute;width:13px;height:13px;pointer-events:none;z-index:4}
+  .cm-tl{top:-1px;left:-1px;border-top:2px solid var(--accent);border-left:2px solid var(--accent)}
+  .cm-br{bottom:-1px;right:-1px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent)}
+
+  .kick{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--ground) 86%,transparent);
+    backdrop-filter:saturate(160%) blur(9px);-webkit-backdrop-filter:saturate(160%) blur(9px);
+    border-bottom:1px solid var(--line)}
+  .nav .wrap{height:58px;display:flex;align-items:center;justify-content:space-between}
+  .wordmark{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:14px;font-weight:500;
+    letter-spacing:.14em;color:var(--text);text-transform:uppercase}
+  .wordmark:hover{text-decoration:none}
+  .wordmark .sq{width:11px;height:11px;background:var(--accent);border-radius:1px}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav-links{display:flex;align-items:center;gap:22px}
+  .nav-links a{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;color:var(--muted);text-transform:lowercase}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);text-decoration:none}
+  .icbtn{background:none;border:1px solid var(--line-2);color:var(--muted);width:36px;height:34px;border-radius:6px;
+    cursor:pointer;display:grid;place-items:center;transition:.18s}
+  .icbtn:hover{color:var(--accent);border-color:var(--accent)}
+  .icbtn svg{width:17px;height:17px}
+  .menu-btn{display:none;font-size:18px;line-height:1}
+  @media(max-width:860px){
+    .nav-links{display:none;position:absolute;top:58px;left:0;right:0;flex-direction:column;align-items:flex-start;
+      gap:0;background:var(--ground);border-bottom:1px solid var(--line)}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:13px 26px;width:100%}
+    .menu-btn{display:grid}
   }
-  .links{display:flex;align-items:center;gap:24px}
+
+  /* hero */
+  .hero{padding:60px 0 30px}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+  .hero-eyes{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .hero-eyes .rule{height:1px;flex:1;background:var(--line-2);max-width:60px}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,9vw,94px);line-height:.92;
+    letter-spacing:-.01em;margin-bottom:14px}
+  .thesis{font-family:var(--display);font-weight:600;font-size:clamp(21px,3.4vw,31px);line-height:1.12;
+    color:var(--text);margin-bottom:22px;max-width:16em}
+  .thesis .hl{color:var(--accent)}
+  .hero-lead{color:var(--muted);font-size:16.5px;max-width:34em;margin-bottom:24px}
+  .hero-lead b{color:var(--text);font-weight:600}
+  .hero-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .status{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent-soft);border-radius:999px;padding:8px 14px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);animation:pulse 2.4s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 6px transparent}}
+  .ghost{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .ghost:hover{color:var(--accent);text-decoration:none}
+
+  /* hero readout */
+  .readout{position:relative;border:1px solid var(--line-2);border-radius:6px;background:var(--card);
+    overflow:hidden;aspect-ratio:16/11;display:flex;flex-direction:column;justify-content:space-between;padding:16px;
+    box-shadow:0 18px 40px -24px rgba(20,30,50,.4)}
+  .readout canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .readout .ro-top,.readout .ro-bottom{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between}
+  .ro-tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+  .ro-live{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--accent);display:inline-flex;align-items:center;gap:7px;text-transform:uppercase}
+  .ro-fps{position:relative;z-index:1;display:flex;align-items:baseline;gap:8px;line-height:1}
+  .ro-fps #fps{font-family:var(--display);font-weight:800;font-size:clamp(44px,8vw,68px);color:var(--accent);
+    font-variant-numeric:tabular-nums}
+  .ro-unit{font-family:var(--mono);font-size:14px;color:var(--muted)}
+  .ro-sub{font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.02em}
 
   /* layout */
-  .layout{max-width:1180px;margin:0 auto;padding:40px 26px 0;display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
-  @media(max-width:920px){.layout{grid-template-columns:1fr;gap:30px;padding-top:30px}}
+  .layout{display:grid;grid-template-columns:286px 1fr;gap:50px;align-items:start;padding:30px 0 0}
+  @media(max-width:920px){.layout{grid-template-columns:1fr;gap:36px}}
 
-  /* sidebar */
-  .sidebar{position:sticky;top:84px}
-  @media(max-width:920px){.sidebar{position:static}}
-  .profile{text-align:center}
-  .avatar{width:170px;height:170px;border-radius:50%;margin:0 auto 20px;position:relative;overflow:hidden;
-    display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:62px;color:#fff;
-    background:linear-gradient(140deg,#2563eb,#4f86f7 55%,#7aa7ff);
-    box-shadow:0 10px 30px -10px rgba(37,99,235,.5);border:4px solid var(--card)}
-  [data-theme="dark"] .avatar{box-shadow:0 10px 34px -10px rgba(90,162,255,.45)}
-  .avatar .avatar-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;border-radius:50%;z-index:2}
-  .avatar .ring{position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--border);z-index:3}
-  .pname{font-family:var(--serif);font-size:28px;font-weight:600;letter-spacing:.2px;line-height:1.15;margin-bottom:6px}
-  .ptitle{color:var(--muted);font-size:15px;line-height:1.5;margin-bottom:4px}
-  .ptitle b{color:var(--text);font-weight:600}
-  .pmeta{margin-top:18px;text-align:left;display:flex;flex-direction:column;gap:2px}
-  .pmeta a,.pmeta div{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;color:var(--muted);font-size:14.5px;transition:.18s}
-  .pmeta a:hover{background:var(--bg-soft);color:var(--accent);text-decoration:none}
-  .pmeta .ic{width:18px;height:18px;flex-shrink:0;color:var(--faint)}
-  .pmeta a:hover .ic{color:var(--accent)}
-  .availtag{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:7px 13px}
-  .availtag .d{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);animation:pulse 2.4s infinite}
-  @keyframes pulse{50%{box-shadow:0 0 0 6px transparent}}
-  .resume-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;width:100%;
-    border:1px solid var(--accent);color:#fff;background:var(--accent);font-weight:600;font-size:14.5px;padding:11px;border-radius:10px;transition:.2s}
-  .resume-btn:hover{text-decoration:none;filter:brightness(1.06);transform:translateY(-1px);box-shadow:0 8px 20px -8px var(--accent)}
-  .resume-btn svg{width:16px;height:16px}
+  /* spec panel */
+  .spec{position:sticky;top:80px;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:18px}
+  @media(max-width:920px){.spec{position:static}}
+  .spec-photo{border-radius:4px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(150deg,#2a3340,#3a4756)}
+  .spec-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;
+    filter:grayscale(.22) contrast(1.02);transition:filter .4s}
+  .spec-photo:hover img{filter:none}
+  .spec-cap{position:absolute;left:0;bottom:0;z-index:3;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+    color:#fff;background:rgba(12,16,22,.62);backdrop-filter:blur(2px);padding:5px 9px;border-top-right-radius:5px}
+  .spec-name{font-family:var(--display);font-weight:700;font-size:25px;letter-spacing:.01em;margin:15px 0 2px;line-height:1.05}
+  .spec-role{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted);margin-bottom:14px}
+  .spec-rows{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .spec-rows .row{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);align-items:center}
+  .spec-rows dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .spec-rows dd{font-size:13px;color:var(--text);display:flex;align-items:center;gap:7px}
+  .spec-rows dd .dot{animation:none}
+  .spec-links{display:flex;flex-direction:column;gap:2px;margin:14px 0 4px}
+  .spec-links a{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;color:var(--muted);font-size:13.5px;transition:.16s}
+  .spec-links a:hover{background:var(--surface);color:var(--accent);text-decoration:none}
+  .spec-links .ic{width:17px;height:17px;flex-shrink:0;color:var(--faint)}
+  .spec-links a:hover .ic{color:var(--accent)}
+  .spec-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;
+    background:var(--accent);color:#fff;border:1px solid var(--accent);font-family:var(--mono);font-size:13px;
+    letter-spacing:.04em;font-weight:500;padding:11px;border-radius:7px;transition:.2s}
+  .spec-btn:hover{text-decoration:none;color:#fff;filter:brightness(1.07);transform:translateY(-1px)}
+  .spec-btn svg{width:15px;height:15px}
 
-  /* main */
-  main{min-width:0;padding-bottom:60px}
-  section{margin-bottom:54px;scroll-margin-top:80px}
-  .h2{font-family:var(--serif);font-size:27px;font-weight:600;letter-spacing:.2px;margin-bottom:18px;
-    padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:12px}
-  .h2 .n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500}
+  /* sections */
+  main{min-width:0;padding-bottom:50px}
+  .sec{padding-bottom:46px;margin-bottom:46px;border-bottom:1px solid var(--line)}
+  .sec:last-child{border-bottom:none}
+  .sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+  .sec-title{font-family:var(--display);font-weight:700;font-size:clamp(27px,4.4vw,35px);letter-spacing:.005em;line-height:1}
   p.body{color:var(--muted);margin-bottom:14px;font-size:16px}
   p.body b{color:var(--text);font-weight:600}
-  .lead-name{font-family:var(--serif);font-size:clamp(30px,5vw,40px);font-weight:600;line-height:1.1;margin-bottom:6px;letter-spacing:.2px}
-  .lead-sub{color:var(--muted);font-size:18px;margin-bottom:22px}
-  .lead-sub b{color:var(--text);font-weight:600}
-  .pull{border-left:3px solid var(--accent);background:var(--bg-soft);padding:14px 18px;border-radius:0 10px 10px 0;color:var(--text);margin:18px 0;font-size:15.5px}
+  .pull{border-left:2px solid var(--accent);background:var(--surface);padding:15px 18px;border-radius:0 6px 6px 0;
+    color:var(--text);margin:18px 0;font-size:15.5px}
 
-  /* news */
-  .news{list-style:none;display:flex;flex-direction:column;gap:0}
-  .news li{display:grid;grid-template-columns:128px 1fr;gap:18px;padding:13px 0;border-bottom:1px dashed var(--border);font-size:15.5px;color:var(--muted)}
-  .news li:last-child{border-bottom:none}
-  .news .date{font-family:var(--mono);font-size:13px;color:var(--accent);padding-top:2px}
-  .news b{color:var(--text);font-weight:600}
-  @media(max-width:560px){.news li{grid-template-columns:1fr;gap:3px}}
+  /* log */
+  .log{display:flex;flex-direction:column}
+  .log .item{display:grid;grid-template-columns:118px 1fr;gap:18px;padding:13px 0;border-bottom:1px dashed var(--line);
+    font-size:15.5px;color:var(--muted)}
+  .log .item:last-child{border-bottom:none}
+  .log .when{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--accent);padding-top:2px}
+  .log b{color:var(--text);font-weight:600}
+  @media(max-width:560px){.log .item{grid-template-columns:1fr;gap:3px}}
 
-  /* projects (publication style) */
-  .pub{display:grid;grid-template-columns:230px 1fr;gap:24px;padding:22px;border:1px solid var(--border);border-radius:14px;background:var(--card);box-shadow:var(--shadow);margin-bottom:20px;transition:.25s}
-  .pub:hover{border-color:var(--border-strong);transform:translateY(-2px)}
-  .pub.feat{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-soft),var(--shadow)}
-  .thumb{border-radius:10px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/10;background:var(--bg-soft)}
+  /* work cards */
+  .work{display:flex;flex-direction:column;gap:18px}
+  .proj{display:grid;grid-template-columns:228px 1fr;gap:24px;padding:20px;border:1px solid var(--line);
+    border-radius:10px;background:var(--card);transition:.22s}
+  .proj:hover{border-color:var(--line-2);transform:translateY(-2px);box-shadow:0 16px 34px -22px rgba(20,30,50,.5)}
+  .proj.feat{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-soft)}
+  .thumb{border-radius:6px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--surface)}
   .thumb svg{width:100%;height:100%;display:block}
-  .pub h3{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.25;margin-bottom:4px}
-  .pub h3 a{color:var(--text)}.pub h3 a:hover{color:var(--accent)}
-  .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 8px;margin-bottom:9px;vertical-align:middle}
-  .venue{color:var(--muted);font-size:14px;margin-bottom:10px}
-  .venue b{color:var(--text);font-weight:600}
+  .proj h3{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.1;margin-bottom:5px}
+  .proj h3 a{color:var(--text)}.proj h3 a:hover{color:var(--accent)}
+  .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);
+    background:var(--accent-soft);border-radius:4px;padding:3px 8px;margin-bottom:9px}
+  .venue{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--muted);margin-bottom:11px}
+  .venue b{color:var(--text);font-weight:500}
   .pdesc{color:var(--muted);font-size:15px;margin-bottom:12px}
   .pdesc b{color:var(--text);font-weight:600}
   .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
-  .tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);background:var(--bg-soft);border:1px solid var(--border);border-radius:6px;padding:4px 9px}
-  .plinks{display:flex;gap:16px;flex-wrap:wrap}
-  .plinks a{font-size:13.5px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
-  .plinks svg{width:15px;height:15px}
-  @media(max-width:620px){.pub{grid-template-columns:1fr;gap:16px}.thumb{max-width:280px}}
+  .tag{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--surface);border:1px solid var(--line);
+    border-radius:4px;padding:4px 9px}
+  .plinks{display:flex;gap:18px;flex-wrap:wrap}
+  .plinks a{font-family:var(--mono);font-size:12.5px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+  .plinks svg{width:14px;height:14px}
+  .metrics{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px}
+  .metrics li{display:flex;gap:10px;color:var(--muted);font-size:14.5px}
+  .metrics li::before{content:"▹";color:var(--accent);flex-shrink:0}
+  .metrics b{color:var(--text);font-weight:600}
+  @media(max-width:620px){.proj{grid-template-columns:1fr;gap:16px}.thumb{max-width:300px}}
 
-  /* experience / education with logos */
-  .entry{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--border)}
+  /* experience / education */
+  .xp{display:flex;flex-direction:column}
+  .entry{display:grid;grid-template-columns:50px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
   .entry:last-child{border-bottom:none}
-  .logo{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--border);background:var(--bg-soft);overflow:hidden}
-  .logo svg{width:30px;height:30px}
-  .entry .role{font-size:16.5px;font-weight:600;color:var(--text);line-height:1.3}
-  .entry .org{font-size:14.5px;color:var(--muted)}
-  .entry .when{font-family:var(--mono);font-size:12.5px;color:var(--faint);margin:2px 0 8px}
-  .entry ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:8px}
+  .logo{width:50px;height:50px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface)}
+  .logo svg{width:28px;height:28px}
+  .entry .role{font-size:16.5px;font-weight:600;color:var(--text);line-height:1.25}
+  .entry .org{font-size:14px;color:var(--muted)}
+  .entry .when{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--faint);margin:3px 0 8px}
+  .entry ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:6px}
   .entry ul li{display:flex;gap:10px;color:var(--muted);font-size:15px}
   .entry ul li::before{content:"–";color:var(--accent);flex-shrink:0}
   .entry ul li b{color:var(--text);font-weight:600}
   .entry .tags{margin-top:12px}
 
-  /* awards */
-  .awards{list-style:none;display:grid;gap:11px}
-  .awards li{display:flex;gap:12px;color:var(--muted);font-size:15.5px;align-items:flex-start}
-  .awards li svg{width:18px;height:18px;color:var(--accent);flex-shrink:0;margin-top:3px}
-  .awards li b{color:var(--text);font-weight:600}
+  /* highlights */
+  .hi{list-style:none;display:grid;gap:11px}
+  .hi li{display:flex;gap:12px;color:var(--muted);font-size:15.5px;align-items:flex-start}
+  .hi li svg{width:18px;height:18px;color:var(--accent);flex-shrink:0;margin-top:3px}
+  .hi li b{color:var(--text);font-weight:600}
 
-  /* skills */
-  .skills{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:560px){.skills{grid-template-columns:1fr}}
-  .skbox{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--card)}
-  .skbox h4{font-family:var(--mono);font-size:12.5px;color:var(--accent);margin-bottom:11px;font-weight:500}
-  .skbox h4::before{content:"# ";opacity:.6}
+  /* stack */
+  .stack{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  @media(max-width:560px){.stack{grid-template-columns:1fr}}
+  .skbox{border:1px solid var(--line);border-radius:9px;padding:15px 17px;background:var(--card)}
+  .skbox h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:11px;font-weight:500}
   .skchips{display:flex;flex-wrap:wrap;gap:7px}
-  .skchip{font-size:13px;color:var(--text);background:var(--bg-soft);border:1px solid var(--border);border-radius:7px;padding:5px 10px}
+  .skchip{font-size:13px;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:5px 10px}
   .skbox.exploring .skchip{color:var(--muted)}
 
   /* contact */
-  .contact-box{border:1px solid var(--border);border-radius:14px;background:var(--bg-soft);padding:26px;text-align:center}
-  .contact-box p{color:var(--muted);max-width:40em;margin:0 auto 18px;font-size:15.5px}
-  .contact-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .cbtn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;padding:11px 18px;border-radius:10px;border:1px solid var(--border-strong);color:var(--text);background:var(--card);transition:.2s}
+  .contact-box{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:28px;text-align:center}
+  .contact-box p{color:var(--muted);max-width:42em;margin:0 auto 20px;font-size:16px}
+  .cactions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cbtn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;letter-spacing:.03em;
+    padding:11px 18px;border-radius:7px;border:1px solid var(--line-2);color:var(--text);background:var(--card);transition:.2s}
   .cbtn:hover{text-decoration:none;border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
   .cbtn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .cbtn.primary:hover{color:#fff;filter:brightness(1.06)}
-  .cbtn svg{width:16px;height:16px}
+  .cbtn.primary:hover{color:#fff;filter:brightness(1.07)}
+  .cbtn svg{width:15px;height:15px}
 
-  footer{border-top:1px solid var(--border);margin-top:20px}
-  .foot{max-width:1180px;margin:0 auto;padding:24px 26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+  footer{border-top:1px solid var(--line);margin-top:10px}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:22px 0;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--faint)}
 
-  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
   .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation:none!important}}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.dot{animation:none}*{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<div class="masthead">
-  <div class="inner">
-    <a href="#" class="brand">Taishi Higo</a>
-    <div class="mast-nav">
-      <div class="links" id="links">
-        <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="wordmark"><span class="sq"></span>Taishi Higo</a>
+    <div class="nav-right">
+      <div class="nav-links" id="links">
+        <a href="#about">about</a>
+        <a href="#log">log</a>
+        <a href="#work">work</a>
+        <a href="#experience">experience</a>
+        <a href="#stack">stack</a>
+        <a href="#contact">contact</a>
       </div>
-      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
+      <button class="icbtn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
         <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu">≡</button>
+      <button class="icbtn menu-btn" id="menuBtn" aria-label="Menu">≡</button>
     </div>
   </div>
-</div>
+</nav>
 
-<div class="layout">
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="profile">
-      <div class="avatar"><img src="profile.jpg" alt="Taishi Higo" class="avatar-img" onerror="this.remove()" />TH<span class="ring"></span></div>
-      <div class="pname">Taishi Higo</div>
-      <div class="ptitle"><b>Computer Engineering</b> student<br/>& Full-Stack Engineer</div>
-      <span class="availtag"><span class="d"></span>open to SWE internships</span>
-      <div class="pmeta">
-        <div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Rexburg, ID · 日本 Japan</div>
-        <a href="mailto:taishi05292004@gmail.com"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>taishi05292004@gmail.com</a>
-        <a href="https://github.com/taishi-dev/" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>github.com/taishi-dev</a>
-        <a href="https://www.linkedin.com/in/taishihigo" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>in/taishihigo</a>
+<header id="top" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyes"><span class="kick">Real-time · Computer vision · AI</span><span class="rule"></span></div>
+      <h1>Taishi Higo</h1>
+      <p class="thesis">I build real-time systems and <span class="hl">tune them until they run.</span></p>
+      <p class="hero-lead">Computer Engineering student at <b>BYU–Idaho</b> and full-stack engineer at the University Store, where I build integrations thousands of students rely on each semester. I work where real-time graphics, computer vision, and AI meet.</p>
+      <div class="hero-cta">
+        <span class="status"><span class="dot"></span>open to SWE internships</span>
+        <a class="ghost" href="#work">see selected work ↓</a>
       </div>
-      <a href="mailto:taishi05292004@gmail.com" class="resume-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
-        Get in touch
-      </a>
     </div>
+
+    <div class="readout frame" aria-label="Render-loop telemetry: optimized 3 to 30 frames per second">
+      <span class="cm cm-tl"></span><span class="cm cm-br"></span>
+      <canvas id="readout-cvs"></canvas>
+      <div class="ro-top">
+        <span class="ro-tag">render loop</span>
+        <span class="ro-live"><span class="dot"></span>tracking</span>
+      </div>
+      <div>
+        <div class="ro-fps"><span id="fps">3</span><span class="ro-unit">fps</span></div>
+        <div class="ro-sub">optimized 3 → 30 · webcam motion tracking</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <!-- SPEC PANEL -->
+  <aside class="spec">
+    <div class="spec-photo frame">
+      <span class="cm cm-tl"></span><span class="cm cm-br"></span>
+      <img src="profile.jpg" alt="Taishi Higo" onerror="this.style.display='none'" />
+      <span class="spec-cap">REXBURG ⇄ TOKYO</span>
+    </div>
+    <div class="spec-name">Taishi Higo</div>
+    <div class="spec-role">Computer Engineering · Full-stack</div>
+    <dl class="spec-rows">
+      <div class="row"><dt>status</dt><dd><span class="dot"></span>open to internships</dd></div>
+      <div class="row"><dt>based</dt><dd>Rexburg, ID</dd></div>
+      <div class="row"><dt>origin</dt><dd>日本 Japan</dd></div>
+      <div class="row"><dt>gpa</dt><dd>4.0 major / 3.89</dd></div>
+      <div class="row"><dt>langs</dt><dd>JA native · EN</dd></div>
+      <div class="row"><dt>grad</dt><dd>June 2028</dd></div>
+    </dl>
+    <div class="spec-links">
+      <a href="mailto:taishi05292004@gmail.com"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>taishi05292004@gmail.com</a>
+      <a href="https://github.com/taishi-dev/" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>github.com/taishi-dev</a>
+      <a href="https://www.linkedin.com/in/taishihigo" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>in/taishihigo</a>
+    </div>
+    <a href="mailto:taishi05292004@gmail.com" class="spec-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+      Get in touch
+    </a>
   </aside>
 
   <!-- MAIN -->
   <main>
-    <section id="about" class="reveal">
-      <div class="lead-name">Hi, I'm Taishi 👋</div>
-      <p class="lead-sub">I build <b>real-time, AI-driven systems</b> end-to-end.</p>
-      <p class="body">I'm a Computer Engineering student at <b>Brigham Young University–Idaho</b> (4.0 major GPA) and a full-stack engineer at the BYU-Idaho University Store, where I build integration systems that thousands of students rely on every semester. My interests sit at the intersection of <b>real-time graphics, computer vision, and AI integration</b>.</p>
-      <p class="body">Most recently I led <b>Virtual Driving School</b>, a webcam motion-controlled driving simulator that placed <b>2nd of 30 teams</b> at the Giiku CAMP 2025 hackathon in Tokyo. I like shipping a real artifact, pushing it for performance, and wiring in AI where it genuinely helps.</p>
-      <div class="pull">The skill I care about most isn't the language I learned in class — it's how fast I can pick up the stack a problem actually needs. Three.js, MediaPipe, and the Gemini API weren't in any course; the build demanded them, so I learned them.</div>
-      <p class="body">I'm especially drawn to problems where <b>AI meets real trust-and-safety constraints</b> — like where the line should sit between what an AI system can touch and what it can't when you're handling confidential data. That's the kind of engineering I want to keep doing.</p>
+    <section id="about" class="sec reveal">
+      <div class="sec-head"><span class="kick">// profile</span><h2 class="sec-title">About</h2></div>
+      <p class="body">My interests sit where <b>real-time graphics, computer vision, and AI integration</b> meet. I like shipping a real artifact, pushing it for performance, and wiring in AI only where it genuinely helps.</p>
+      <p class="body">Most recently I led <b>Virtual Driving School</b>, a webcam motion-controlled driving simulator that placed <b>2nd of 30 teams</b> at the Giiku CAMP 2025 hackathon in Tokyo. At the BYU–Idaho University Store I build integration systems that thousands of students rely on every semester.</p>
+      <div class="pull">The skill I value most isn't the language I learned in class. It's how fast I can pick up the stack a problem actually needs. Three.js, MediaPipe, and the Gemini API weren't in any course; the build demanded them, so I learned them.</div>
+      <p class="body">I'm especially drawn to problems where <b>AI meets real trust-and-safety constraints</b>, like deciding where the line should sit between what an AI system can touch and what it can't when you're handling confidential data. That's the kind of engineering I want to keep doing.</p>
     </section>
 
-    <section id="news" class="reveal">
-      <div class="h2"><span class="n">01</span> News</div>
-      <ul class="news">
-        <li><span class="date">Fall 2026</span><span>Heading to <b>Japan</b> for a software engineering internship.</span></li>
-        <li><span class="date">2026</span><span>Joined the <b>IEEE Society</b> and started on a <b>CubeSat</b> structural design rated for launch loads.</span></li>
-        <li><span class="date">Jan 2026</span><span>Began as a <b>Full-Stack Engineer</b> at the BYU-Idaho University Store, building Verba Collect ↔ NetSuite integrations.</span></li>
-        <li><span class="date">Dec 2025</span><span>Placed <b>2nd of 30 teams</b> at <b>Giiku CAMP 2025</b> (Tokyo) with Virtual Driving School.</span></li>
-      </ul>
+    <section id="log" class="sec reveal">
+      <div class="sec-head"><span class="kick">// log</span><h2 class="sec-title">Log</h2></div>
+      <div class="log">
+        <div class="item"><span class="when">Fall 2026</span><span>Heading to <b>Japan</b> for a software engineering internship.</span></div>
+        <div class="item"><span class="when">2026</span><span>Joined the <b>IEEE Society</b> and started on a <b>CubeSat</b> structural design rated for launch loads.</span></div>
+        <div class="item"><span class="when">Jan 2026</span><span>Began as a <b>full-stack engineer</b> at the BYU–Idaho University Store, building Verba Collect ↔ NetSuite integrations.</span></div>
+        <div class="item"><span class="when">Dec 2025</span><span>Placed <b>2nd of 30 teams</b> at <b>Giiku CAMP 2025</b> (Tokyo) with Virtual Driving School.</span></div>
+      </div>
     </section>
 
-    <section id="projects" class="reveal">
-      <div class="h2"><span class="n">02</span> Projects</div>
+    <section id="work" class="sec reveal">
+      <div class="sec-head"><span class="kick">// selected work</span><h2 class="sec-title">Work</h2></div>
+      <div class="work">
 
-      <!-- FEATURED -->
-      <article class="pub feat">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Virtual Driving School">
-            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a4a"/><stop offset="1" stop-color="#0c1426"/></linearGradient></defs>
-            <rect width="320" height="200" fill="url(#g1)"/>
-            <circle cx="160" cy="74" r="30" fill="#2f3e63" opacity=".6"/>
-            <path d="M160 116 L60 200 H260 Z" fill="#16213d"/>
-            <path d="M160 116 L150 200 H170 Z" fill="#3a4d7a"/>
-            <g stroke="#5aa2ff" stroke-width="3" stroke-linecap="round"><path d="M120 200 L150 130"/><path d="M200 200 L170 130"/></g>
-            <g stroke="#fbbf24" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"><path d="M160 196 L160 132"/></g>
-            <g fill="#5eead4"><circle cx="96" cy="60" r="5"/><circle cx="120" cy="48" r="5"/><circle cx="210" cy="52" r="5"/><circle cx="236" cy="66" r="5"/></g>
-            <g stroke="#5eead4" stroke-width="1.5" opacity=".7"><path d="M96 60 L120 48 M210 52 L236 66"/></g>
-            <rect x="14" y="14" width="92" height="22" rx="5" fill="#0c1426" stroke="#5aa2ff" stroke-width="1"/>
-            <text x="24" y="29" fill="#5aa2ff" font-family="monospace" font-size="11">30 FPS ▲</text>
-          </svg>
-        </div>
-        <div>
-          <span class="badge">★ Best — 2nd of 30 teams</span>
-          <h3><a href="https://driving-8dvm-git-main-taishi-devs-projects.vercel.app/" target="_blank" rel="noopener">Virtual Driving School</a></h3>
-          <div class="venue"><b>Giiku CAMP 2025 Hackathon</b>, Tokyo · Dec 2025 · team of 4 (lead)</div>
-          <p class="pdesc">A motion-controlled driving simulator you steer with nothing but your webcam. I owned the real-time performance and the AI feedback loop, taking it from a choppy prototype to something you can actually drive — and integrating live AI coaching on driving skill.</p>
-          <div class="tags"><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">Next.js</span><span class="tag">MediaPipe</span><span class="tag">Gemini API</span></div>
-          <div class="plinks">
-            <a href="https://driving-8dvm-git-main-taishi-devs-projects.vercel.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>Live demo</a>
-            <a href="https://github.com/taishi-dev/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>Source</a>
+        <article class="proj feat">
+          <div class="thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Virtual Driving School">
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a4a"/><stop offset="1" stop-color="#0c1426"/></linearGradient></defs>
+              <rect width="320" height="200" fill="url(#g1)"/>
+              <circle cx="160" cy="74" r="30" fill="#2f3e63" opacity=".6"/>
+              <path d="M160 116 L60 200 H260 Z" fill="#16213d"/>
+              <path d="M160 116 L150 200 H170 Z" fill="#3a4d7a"/>
+              <g stroke="#5aa2ff" stroke-width="3" stroke-linecap="round"><path d="M120 200 L150 130"/><path d="M200 200 L170 130"/></g>
+              <g stroke="#fbbf24" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"><path d="M160 196 L160 132"/></g>
+              <g fill="#5eead4"><circle cx="96" cy="60" r="5"/><circle cx="120" cy="48" r="5"/><circle cx="210" cy="52" r="5"/><circle cx="236" cy="66" r="5"/></g>
+              <g stroke="#5eead4" stroke-width="1.5" opacity=".7"><path d="M96 60 L120 48 M210 52 L236 66"/></g>
+              <rect x="14" y="14" width="92" height="22" rx="4" fill="#0c1426" stroke="#5aa2ff" stroke-width="1"/>
+              <text x="24" y="29" fill="#5aa2ff" font-family="monospace" font-size="11">30 FPS ▲</text>
+            </svg>
           </div>
-          <ul class="entry-bul" style="list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px">
-            <li style="display:flex;gap:10px;color:var(--muted);font-size:14.5px"><span style="color:var(--accent)">▹</span><span>Refactored the render &amp; tracking loop for a <b style="color:var(--text)">10× performance gain (3 → 30 FPS)</b>.</span></li>
-            <li style="display:flex;gap:10px;color:var(--muted);font-size:14.5px"><span style="color:var(--accent)">▹</span><span>Sharpened control precision by expanding MediaPipe tracking from <b style="color:var(--text)">1 to 4 points per section</b> across braking, coasting &amp; acceleration.</span></li>
-          </ul>
-        </div>
-      </article>
+          <div>
+            <span class="badge">★ 2nd of 30 teams</span>
+            <h3><a href="https://driving-8dvm-git-main-taishi-devs-projects.vercel.app/" target="_blank" rel="noopener">Virtual Driving School</a></h3>
+            <div class="venue"><b>Giiku CAMP 2025 Hackathon</b> · Tokyo · Dec 2025 · team of 4 (lead)</div>
+            <p class="pdesc">A motion-controlled driving simulator you steer with nothing but your webcam. I owned the real-time performance and the AI feedback loop, taking it from a choppy prototype to something you can actually drive, with live AI coaching on driving skill.</p>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">Next.js</span><span class="tag">MediaPipe</span><span class="tag">Gemini API</span></div>
+            <div class="plinks">
+              <a href="https://driving-8dvm-git-main-taishi-devs-projects.vercel.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>Live demo</a>
+              <a href="https://github.com/taishi-dev/driving-game" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>Source</a>
+            </div>
+            <ul class="metrics">
+              <li>Refactored the render and tracking loop for a <b>10× performance gain (3 → 30 FPS)</b>.</li>
+              <li>Sharpened control precision by expanding MediaPipe tracking from <b>1 to 4 points per section</b> across braking, coasting, and acceleration.</li>
+            </ul>
+          </div>
+        </article>
 
-      <!-- CUBESAT -->
-      <article class="pub">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CubeSat">
-            <rect width="320" height="200" fill="#0c1426"/>
-            <g fill="#fff"><circle cx="40" cy="40" r="1.3"/><circle cx="280" cy="60" r="1.3"/><circle cx="250" cy="30" r="1"/><circle cx="70" cy="150" r="1"/><circle cx="290" cy="150" r="1.2"/><circle cx="120" cy="36" r="1"/></g>
-            <path d="M40 150 A130 110 0 0 1 280 150" fill="none" stroke="#2f3e63" stroke-width="2" stroke-dasharray="4 6"/>
-            <g transform="translate(160 100)">
-              <rect x="-26" y="-26" width="52" height="52" rx="4" fill="#1c2b4d" stroke="#5aa2ff" stroke-width="2"/>
-              <rect x="-18" y="-18" width="36" height="36" rx="2" fill="none" stroke="#5eead4" stroke-width="1.5"/>
-              <rect x="-60" y="-16" width="30" height="32" fill="#15233f" stroke="#5aa2ff" stroke-width="1.5"/>
-              <rect x="30" y="-16" width="30" height="32" fill="#15233f" stroke="#5aa2ff" stroke-width="1.5"/>
-              <g stroke="#3a4d7a" stroke-width="1"><path d="M-52 -16 v32 M-44 -16 v32 M-37 -16 v32 M37 -16v32 M44 -16v32 M52 -16v32"/></g>
-            </g>
-          </svg>
-        </div>
-        <div>
-          <h3>CubeSat Structure</h3>
-          <div class="venue"><b>IEEE Society</b>, BYU-Idaho · 2026</div>
-          <p class="pdesc">Structural design for a small satellite carrying onboard environmental sensors — engineered to survive launch and stay stable in orbit for long-term observation.</p>
-          <div class="tags"><span class="tag">Autodesk Fusion</span><span class="tag">CAD</span><span class="tag">Stress Analysis</span></div>
-          <ul class="entry-bul" style="list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:6px">
-            <li style="display:flex;gap:10px;color:var(--muted);font-size:14.5px"><span style="color:var(--accent)">▹</span><span>Designing a chassis rated for <b style="color:var(--text)">5G of launch acceleration</b> and heavy vibration.</span></li>
-            <li style="display:flex;gap:10px;color:var(--muted);font-size:14.5px"><span style="color:var(--accent)">▹</span><span>Developing a low-RPM stabilization config for <b style="color:var(--text)">long-term</b> atmospheric observation.</span></li>
-          </ul>
-        </div>
-      </article>
+        <article class="proj">
+          <div class="thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CubeSat">
+              <rect width="320" height="200" fill="#0c1426"/>
+              <g fill="#fff"><circle cx="40" cy="40" r="1.3"/><circle cx="280" cy="60" r="1.3"/><circle cx="250" cy="30" r="1"/><circle cx="70" cy="150" r="1"/><circle cx="290" cy="150" r="1.2"/><circle cx="120" cy="36" r="1"/></g>
+              <path d="M40 150 A130 110 0 0 1 280 150" fill="none" stroke="#2f3e63" stroke-width="2" stroke-dasharray="4 6"/>
+              <g transform="translate(160 100)">
+                <rect x="-26" y="-26" width="52" height="52" rx="4" fill="#1c2b4d" stroke="#5aa2ff" stroke-width="2"/>
+                <rect x="-18" y="-18" width="36" height="36" rx="2" fill="none" stroke="#5eead4" stroke-width="1.5"/>
+                <rect x="-60" y="-16" width="30" height="32" fill="#15233f" stroke="#5aa2ff" stroke-width="1.5"/>
+                <rect x="30" y="-16" width="30" height="32" fill="#15233f" stroke="#5aa2ff" stroke-width="1.5"/>
+                <g stroke="#3a4d7a" stroke-width="1"><path d="M-52 -16 v32 M-44 -16 v32 M-37 -16 v32 M37 -16v32 M44 -16v32 M52 -16v32"/></g>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h3>CubeSat Structure</h3>
+            <div class="venue"><b>IEEE Society</b> · BYU–Idaho · 2026</div>
+            <p class="pdesc">Structural design for a small satellite carrying onboard environmental sensors, engineered to survive launch and stay stable in orbit for long-term observation.</p>
+            <div class="tags"><span class="tag">Autodesk Fusion</span><span class="tag">CAD</span><span class="tag">Stress Analysis</span></div>
+            <ul class="metrics">
+              <li>Designing a chassis rated for <b>5G of launch acceleration</b> and heavy vibration.</li>
+              <li>Developing a low-RPM stabilization config for <b>long-term</b> atmospheric observation.</li>
+            </ul>
+          </div>
+        </article>
 
-      <!-- MINESWEEPER -->
-      <article class="pub">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minesweeper">
-            <rect width="320" height="200" fill="#eceff4"/>
-            <g>
-              <!-- grid -->
+        <article class="proj">
+          <div class="thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minesweeper">
+              <rect width="320" height="200" fill="#eceff4"/>
               <g stroke="#c3cad6" stroke-width="2" fill="#dfe4ec">
                 <rect x="70" y="40" width="36" height="36"/><rect x="106" y="40" width="36" height="36"/><rect x="142" y="40" width="36" height="36"/><rect x="178" y="40" width="36" height="36"/><rect x="214" y="40" width="36" height="36"/>
                 <rect x="70" y="76" width="36" height="36" fill="#eceff4"/><rect x="106" y="76" width="36" height="36" fill="#eceff4"/><rect x="142" y="76" width="36" height="36"/><rect x="178" y="76" width="36" height="36"/><rect x="214" y="76" width="36" height="36"/>
@@ -328,88 +414,93 @@
               </g>
               <text x="120" y="103" font-family="monospace" font-weight="700" font-size="20" fill="#2563eb" text-anchor="middle">1</text>
               <text x="160" y="139" font-family="monospace" font-weight="700" font-size="20" fill="#16a34a" text-anchor="middle">2</text>
-              <!-- flag -->
               <g transform="translate(232 52)"><path d="M0 0 v24" stroke="#444" stroke-width="2"/><path d="M0 1 L14 6 L0 11 Z" fill="#e11d48"/></g>
-              <!-- mine -->
               <g transform="translate(196 94)" stroke="#1f2937" stroke-width="2"><circle r="8" fill="#1f2937"/><path d="M-12 0H12M0 -12V12M-8 -8 8 8M8 -8 -8 8"/></g>
-            </g>
-          </svg>
-        </div>
-        <div>
-          <h3>Minesweeper</h3>
-          <div class="venue"><b>Toyo University</b>, Tokyo · 2020</div>
-          <p class="pdesc">A clean TypeScript build of the classic — an early project where I got hooked on getting the algorithms and edge cases exactly right.</p>
-          <div class="tags"><span class="tag">TypeScript</span><span class="tag">Algorithms</span></div>
-          <ul class="entry-bul" style="list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:6px">
-            <li style="display:flex;gap:10px;color:var(--muted);font-size:14.5px"><span style="color:var(--accent)">▹</span><span>Recursive backtracking for fast <b style="color:var(--text)">area-reveal</b>; guaranteed <b style="color:var(--text)">safe-start</b> first click.</span></li>
-          </ul>
-        </div>
-      </article>
-    </section>
-
-    <section id="experience" class="reveal">
-      <div class="h2"><span class="n">03</span> Experience</div>
-      <div class="entry">
-        <div class="logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.7"><path d="M3 9l9-6 9 6"/><path d="M5 10v9h14v-9"/><path d="M9 19v-5h6v5"/></svg>
-        </div>
-        <div>
-          <div class="role">Full-Stack Engineer</div>
-          <div class="org">BYU-Idaho University Store · Rexburg, ID</div>
-          <div class="when">Jan 2026 — Present</div>
-          <ul>
-            <li>Built data pipelines between <b>Verba Collect</b> and <b>NetSuite</b> in C#, Azure DevOps &amp; Claude Code, syncing metadata for <b>1,000+ unique ISBNs</b> across university-wide systems.</li>
-            <li>Shipped <b>Single Sign-On</b> for the Auto Access program by integrating Learning Tools Interoperability (LTI) into Canvas, serving <b>25,000+ students and faculty</b>.</li>
-            <li>Automated manual ISBN data entry to drive <b>first-day access failures toward zero</b>, cutting administrative overhead and processing time.</li>
-          </ul>
-          <div class="tags"><span class="tag">C#</span><span class="tag">Azure DevOps</span><span class="tag">NetSuite</span><span class="tag">Canvas / LTI</span><span class="tag">Claude Code</span></div>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.7"><rect x="8" y="8" width="8" height="8" rx="1"/><path d="M8 11H4M8 13H4M20 11h-4M20 13h-4M11 8V4M13 8V4M11 20v-4M13 20v-4"/></svg>
-        </div>
-        <div>
-          <div class="role">Member — CubeSat Team</div>
-          <div class="org">IEEE Society, BYU-Idaho</div>
-          <div class="when">Jan 2026 — May 2026</div>
-          <ul>
-            <li>Contributing structural design and CAD stress analysis for a sensor-carrying small satellite (see Projects).</li>
-          </ul>
-        </div>
+            </svg>
+          </div>
+          <div>
+            <h3>Minesweeper</h3>
+            <div class="venue"><b>Toyo University</b> · Tokyo · 2020</div>
+            <p class="pdesc">A clean TypeScript build of the classic, an early project where I got hooked on getting the algorithms and edge cases exactly right.</p>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Algorithms</span></div>
+            <div class="plinks">
+              <a href="https://github.com/taishi-dev/minesweeper" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>Source</a>
+            </div>
+            <ul class="metrics">
+              <li>Recursive backtracking for fast <b>area-reveal</b>, with a guaranteed <b>safe-start</b> first click.</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="education" class="reveal">
-      <div class="h2"><span class="n">04</span> Education</div>
-      <div class="entry">
-        <div class="logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.7"><path d="M3 8l9-4 9 4-9 4-9-4Z"/><path d="M7 10v5c0 1 2.2 2.5 5 2.5s5-1.5 5-2.5v-5"/><path d="M21 8v5"/></svg>
+    <section id="experience" class="sec reveal">
+      <div class="sec-head"><span class="kick">// experience</span><h2 class="sec-title">Experience</h2></div>
+      <div class="xp">
+        <div class="entry">
+          <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M3 9l9-6 9 6"/><path d="M5 10v9h14v-9"/><path d="M9 19v-5h6v5"/></svg>
+          </div>
+          <div>
+            <div class="role">Full-Stack Engineer</div>
+            <div class="org">BYU–Idaho University Store · Rexburg, ID</div>
+            <div class="when">Jan 2026 — Present</div>
+            <ul>
+              <li>Built data pipelines between <b>Verba Collect</b> and <b>NetSuite</b> in C#, Azure DevOps, and Claude Code, syncing metadata for <b>1,000+ unique ISBNs</b> across university-wide systems.</li>
+              <li>Shipped <b>Single Sign-On</b> for the Auto Access program by integrating Learning Tools Interoperability (LTI) into Canvas, serving <b>25,000+ students and faculty</b>.</li>
+              <li>Automated manual ISBN data entry to drive <b>first-day access failures toward zero</b>, cutting administrative overhead and processing time.</li>
+            </ul>
+            <div class="tags"><span class="tag">C#</span><span class="tag">Azure DevOps</span><span class="tag">NetSuite</span><span class="tag">Canvas / LTI</span><span class="tag">Claude Code</span></div>
+          </div>
         </div>
-        <div>
-          <div class="role">B.S. in Computer Engineering</div>
-          <div class="org">Brigham Young University–Idaho · Rexburg, ID</div>
-          <div class="when">Expected June 2028</div>
-          <ul>
-            <li><b>4.0</b> major GPA · <b>3.89</b> overall GPA · IEEE Society member.</li>
-          </ul>
+        <div class="entry">
+          <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><rect x="8" y="8" width="8" height="8" rx="1"/><path d="M8 11H4M8 13H4M20 11h-4M20 13h-4M11 8V4M13 8V4M11 20v-4M13 20v-4"/></svg>
+          </div>
+          <div>
+            <div class="role">Member — CubeSat Team</div>
+            <div class="org">IEEE Society · BYU–Idaho</div>
+            <div class="when">Jan 2026 — May 2026</div>
+            <ul>
+              <li>Contributing structural design and CAD stress analysis for a sensor-carrying small satellite (see Work).</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="awards" class="reveal">
-      <div class="h2"><span class="n">05</span> Highlights</div>
-      <ul class="awards">
+    <section id="education" class="sec reveal">
+      <div class="sec-head"><span class="kick">// education</span><h2 class="sec-title">Education</h2></div>
+      <div class="xp">
+        <div class="entry">
+          <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M3 8l9-4 9 4-9 4-9-4Z"/><path d="M7 10v5c0 1 2.2 2.5 5 2.5s5-1.5 5-2.5v-5"/><path d="M21 8v5"/></svg>
+          </div>
+          <div>
+            <div class="role">B.S. in Computer Engineering</div>
+            <div class="org">Brigham Young University–Idaho · Rexburg, ID</div>
+            <div class="when">Expected June 2028</div>
+            <ul>
+              <li><b>4.0</b> major GPA · <b>3.89</b> overall GPA · IEEE Society member.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="highlights" class="sec reveal">
+      <div class="sec-head"><span class="kick">// highlights</span><h2 class="sec-title">Highlights</h2></div>
+      <ul class="hi">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M5 6H3v2a3 3 0 0 0 3 3M19 6h2v2a3 3 0 0 1-3 3"/></svg><span><b>2nd of 30 teams</b> — Giiku CAMP 2025 Hackathon, Tokyo (1-week build).</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 15 3.2 1.9-.8-3.6 2.8-2.5-3.7-.3L12 7l-1.5 3.4-3.7.3 2.8 2.5-.8 3.6Z"/><circle cx="12" cy="12" r="10"/></svg><span><b>4.0 major GPA</b> in Computer Engineering.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg><span><b>10× performance gain</b> (3→30 FPS) shipped on a real-time webcam simulator.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><span><b>Bilingual</b> — Japanese (native) &amp; English. No sponsorship required.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg><span><b>10× performance gain</b> (3 → 30 FPS) shipped on a real-time webcam simulator.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><span><b>Bilingual</b> — Japanese (native) and English. No sponsorship required.</span></li>
       </ul>
     </section>
 
-    <section id="skills" class="reveal">
-      <div class="h2"><span class="n">06</span> Skills &amp; Tools</div>
-      <div class="skills">
+    <section id="stack" class="sec reveal">
+      <div class="sec-head"><span class="kick">// stack</span><h2 class="sec-title">Stack &amp; tools</h2></div>
+      <div class="stack">
         <div class="skbox"><h4>languages</h4><div class="skchips"><span class="skchip">C#</span><span class="skchip">TypeScript</span><span class="skchip">JavaScript</span><span class="skchip">Python</span></div></div>
         <div class="skbox"><h4>web &amp; frameworks</h4><div class="skchips"><span class="skchip">Next.js</span><span class="skchip">React</span><span class="skchip">Node.js</span><span class="skchip">Three.js</span><span class="skchip">WebSocket</span></div></div>
         <div class="skbox"><h4>platforms &amp; tools</h4><div class="skchips"><span class="skchip">Azure DevOps</span><span class="skchip">Docker</span><span class="skchip">Git</span><span class="skchip">NetSuite</span><span class="skchip">SQLite</span><span class="skchip">Autodesk Fusion</span></div></div>
@@ -418,11 +509,11 @@
       </div>
     </section>
 
-    <section id="contact" class="reveal">
-      <div class="h2"><span class="n">07</span> Contact</div>
+    <section id="contact" class="sec reveal">
+      <div class="sec-head"><span class="kick">// contact</span><h2 class="sec-title">Contact</h2></div>
       <div class="contact-box">
-        <p>I'm looking for software engineering internships where I can ship real systems and keep learning fast. If you're hiring — or just want to talk real-time graphics or AI — my inbox is open.</p>
-        <div class="contact-actions">
+        <p>I'm looking for software engineering internships where I can ship real systems and keep learning fast. If you're hiring, or just want to talk real-time graphics or AI, my inbox is open.</p>
+        <div class="cactions">
           <a href="mailto:taishi05292004@gmail.com" class="cbtn primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
           <a href="https://www.linkedin.com/in/taishihigo" target="_blank" rel="noopener" class="cbtn">LinkedIn</a>
           <a href="https://github.com/taishi-dev/" target="_blank" rel="noopener" class="cbtn">GitHub</a>
@@ -433,7 +524,7 @@
 </div>
 
 <footer>
-  <div class="foot">
+  <div class="wrap foot">
     <span>© <span id="yr"></span> Taishi Higo · built from scratch</span>
     <span>Rexburg, ID ⇄ Tokyo, JP</span>
   </div>
@@ -442,13 +533,13 @@
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // theme: default light (match reference), respect saved pref / OS
+  // theme
   const root = document.documentElement, tIcon = document.getElementById('themeIcon');
   const moon = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/>';
-  const sun = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  const sun  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
   function setTheme(t){
     root.setAttribute('data-theme', t);
-    document.querySelector('meta[name=theme-color]').setAttribute('content', t==='dark' ? '#0d1117' : '#ffffff');
+    document.querySelector('meta[name=theme-color]').setAttribute('content', t==='dark' ? '#11151a' : '#e7eaec');
     tIcon.innerHTML = t==='dark' ? sun : moon;
     try{ localStorage.setItem('theme', t); }catch(e){}
   }
@@ -463,8 +554,115 @@
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
   // reveal on scroll
-  const io = new IntersectionObserver((es) => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.08, rootMargin:'0px 0px -30px 0px'});
+  const io = new IntersectionObserver((es) => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.06, rootMargin:'0px 0px -30px 0px'});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // scrollspy: highlight current section in nav
+  const navMap = {};
+  links.querySelectorAll('a').forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
+  const spy = new IntersectionObserver((es) => es.forEach(e => {
+    const a = navMap[e.target.id];
+    if(!a) return;
+    if(e.isIntersecting){ Object.values(navMap).forEach(x => x.classList.remove('active')); a.classList.add('active'); }
+  }), {rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+
+  // hero readout: motion tracking + frame-rate ramp (the signature artifact)
+  (function(){
+    const cvs = document.getElementById('readout-cvs');
+    const fpsEl = document.getElementById('fps');
+    if(!cvs || !cvs.getContext) return;
+    const ctx = cvs.getContext('2d');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    let W = 0, H = 0;
+
+    function size(){
+      const r = cvs.getBoundingClientRect();
+      W = r.width; H = r.height;
+      cvs.width = Math.round(W*dpr); cvs.height = Math.round(H*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    size();
+    if(window.ResizeObserver){ new ResizeObserver(size).observe(cvs); }
+    else { window.addEventListener('resize', size); }
+
+    // tracked points (normalized) doing smooth drift, like landmark tracking
+    const N = 7, pts = [];
+    for(let i=0;i<N;i++){
+      pts.push({
+        bx:.18 + .64*Math.random(), by:.24 + .58*Math.random(),
+        ax:.05 + .07*Math.random(), ay:.05 + .07*Math.random(),
+        sx:.3 + .5*Math.random(),  sy:.3 + .5*Math.random(),
+        px:Math.random()*6.28,     py:Math.random()*6.28
+      });
+    }
+
+    const start = performance.now();
+    const rampMs = 1600;
+    function ease(t){ return 1 - Math.pow(1-t, 3); }
+
+    function frame(now){
+      const dark = root.getAttribute('data-theme') === 'dark';
+      const accent = dark ? '#f2582c' : '#e0481f';
+      const teal = dark ? '#39c2b0' : '#1f9e8f';
+      const grid = dark ? 'rgba(255,255,255,.045)' : 'rgba(20,30,50,.05)';
+      const link = dark ? 'rgba(242,88,44,.32)' : 'rgba(224,72,31,.30)';
+
+      ctx.clearRect(0,0,W,H);
+
+      // grid
+      ctx.strokeStyle = grid; ctx.lineWidth = 1;
+      const step = 26;
+      ctx.beginPath();
+      for(let x=step; x<W; x+=step){ ctx.moveTo(x,0); ctx.lineTo(x,H); }
+      for(let y=step; y<H; y+=step){ ctx.moveTo(0,y); ctx.lineTo(W,y); }
+      ctx.stroke();
+
+      const t = reduce ? 0 : (now/1000);
+      const P = pts.map(p => ({
+        x:(p.bx + p.ax*Math.sin(t*p.sx + p.px))*W,
+        y:(p.by + p.ay*Math.cos(t*p.sy + p.py))*H
+      }));
+
+      // connections between nearby points
+      ctx.strokeStyle = link; ctx.lineWidth = 1.1;
+      for(let i=0;i<P.length;i++){
+        for(let j=i+1;j<P.length;j++){
+          const dx=P[i].x-P[j].x, dy=P[i].y-P[j].y, d=Math.hypot(dx,dy);
+          if(d < W*0.34){ ctx.beginPath(); ctx.moveTo(P[i].x,P[i].y); ctx.lineTo(P[j].x,P[j].y); ctx.stroke(); }
+        }
+      }
+
+      // points
+      P.forEach((p,i) => {
+        ctx.beginPath();
+        ctx.fillStyle = (i%3===0) ? teal : accent;
+        ctx.arc(p.x, p.y, 3.1, 0, 6.2832);
+        ctx.fill();
+      });
+      // crosshair on the lead point
+      const lead = P[0];
+      ctx.strokeStyle = accent; ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(lead.x-9, lead.y); ctx.lineTo(lead.x+9, lead.y);
+      ctx.moveTo(lead.x, lead.y-9); ctx.lineTo(lead.x, lead.y+9);
+      ctx.stroke();
+
+      // fps value
+      const el = now - start;
+      let v;
+      if(reduce){ v = 30; }
+      else if(el < rampMs){ v = 3 + 27*ease(el/rampMs); }
+      else { v = (Math.sin(now/650) > .72) ? 29 : 30; }
+      fpsEl.textContent = Math.round(v);
+
+      if(!reduce) requestAnimationFrame(frame);
+    }
+
+    if(reduce){ frame(start); }
+    else { requestAnimationFrame(frame); }
+  })();
 </script>
 </body>
 </html>
