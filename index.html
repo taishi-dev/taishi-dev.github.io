@@ -170,6 +170,7 @@
   .proj.feat{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-soft)}
   .thumb{border-radius:6px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--surface)}
   .thumb svg{width:100%;height:100%;display:block}
+  .thumb img{width:100%;height:100%;display:block;object-fit:cover}
   .proj h3{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.1;margin-bottom:5px}
   .proj h3 a{color:var(--text)}.proj h3 a:hover{color:var(--accent)}
   .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);
@@ -345,19 +346,7 @@
 
         <article class="proj feat">
           <div class="thumb">
-            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Virtual Driving School">
-              <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a4a"/><stop offset="1" stop-color="#0c1426"/></linearGradient></defs>
-              <rect width="320" height="200" fill="url(#g1)"/>
-              <circle cx="160" cy="74" r="30" fill="#2f3e63" opacity=".6"/>
-              <path d="M160 116 L60 200 H260 Z" fill="#16213d"/>
-              <path d="M160 116 L150 200 H170 Z" fill="#3a4d7a"/>
-              <g stroke="#5aa2ff" stroke-width="3" stroke-linecap="round"><path d="M120 200 L150 130"/><path d="M200 200 L170 130"/></g>
-              <g stroke="#fbbf24" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"><path d="M160 196 L160 132"/></g>
-              <g fill="#5eead4"><circle cx="96" cy="60" r="5"/><circle cx="120" cy="48" r="5"/><circle cx="210" cy="52" r="5"/><circle cx="236" cy="66" r="5"/></g>
-              <g stroke="#5eead4" stroke-width="1.5" opacity=".7"><path d="M96 60 L120 48 M210 52 L236 66"/></g>
-              <rect x="14" y="14" width="92" height="22" rx="4" fill="#0c1426" stroke="#5aa2ff" stroke-width="1"/>
-              <text x="24" y="29" fill="#5aa2ff" font-family="monospace" font-size="11">30 FPS ▲</text>
-            </svg>
+            <img src="driving-school.png" alt="Virtual Driving School — webcam motion-controlled driving simulator in play, with the live hand-tracking feed in the corner" loading="lazy" width="320" height="200">
           </div>
           <div>
             <span class="badge">★ 2nd of 30 teams</span>
