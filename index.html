@@ -142,6 +142,11 @@
   .spec-btn:hover{text-decoration:none;color:#fff;filter:brightness(1.07);transform:translateY(-1px)}
   .spec-btn svg{width:15px;height:15px}
 
+  /* grid/flex children must be allowed to shrink, or their min-content floor stretches the page (mobile overflow) */
+  .proj>div,.entry>div{min-width:0}
+  .hi li,.metrics li,.entry ul li,.log .item span{min-width:0}
+  .spec-links a{overflow-wrap:anywhere}
+
   /* sections */
   main{min-width:0;padding-bottom:50px}
   .sec{padding-bottom:46px;margin-bottom:46px;border-bottom:1px solid var(--line)}
