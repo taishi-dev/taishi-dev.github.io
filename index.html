@@ -102,14 +102,19 @@
     overflow:hidden;aspect-ratio:16/11;display:flex;flex-direction:column;justify-content:space-between;padding:16px;
     box-shadow:0 18px 40px -24px rgba(20,30,50,.4)}
   .readout canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-  .readout .ro-top,.readout .ro-bottom{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between}
-  .ro-tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+  .readout .ro-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between}
+  .ro-tag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase}
   .ro-live{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--accent);display:inline-flex;align-items:center;gap:7px;text-transform:uppercase}
-  .ro-fps{position:relative;z-index:1;display:flex;align-items:baseline;gap:8px;line-height:1}
-  .ro-fps #fps{font-family:var(--display);font-weight:800;font-size:clamp(44px,8vw,68px);color:var(--accent);
+  .ro-foot{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+  .ro-fps{display:flex;align-items:baseline;gap:7px;line-height:.85}
+  .ro-fps #fps{font-family:var(--display);font-weight:800;font-size:clamp(44px,8vw,66px);color:var(--accent);
     font-variant-numeric:tabular-nums}
-  .ro-unit{font-family:var(--mono);font-size:14px;color:var(--muted)}
-  .ro-sub{font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.02em}
+  .ro-unit{font-family:var(--mono);font-size:13px;color:var(--muted)}
+  .ro-stats{display:flex;gap:16px;padding-bottom:5px}
+  .ro-stat{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-family:var(--mono)}
+  .ro-stat .rl{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .ro-stat b{font-size:15px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums;line-height:1}
+  .ro-stat .ru{font-size:11px;color:var(--muted);font-weight:400;margin-left:1px}
 
   /* layout */
   .layout{display:grid;grid-template-columns:286px 1fr;gap:50px;align-items:start;padding:30px 0 0}
@@ -285,12 +290,15 @@
       <span class="cm cm-tl"></span><span class="cm cm-br"></span>
       <canvas id="readout-cvs"></canvas>
       <div class="ro-top">
-        <span class="ro-tag">render loop</span>
-        <span class="ro-live"><span class="dot"></span>tracking</span>
+        <span class="ro-tag">render loop · webcam tracking</span>
+        <span class="ro-live"><span class="dot"></span>live</span>
       </div>
-      <div>
+      <div class="ro-foot">
         <div class="ro-fps"><span id="fps">3</span><span class="ro-unit">fps</span></div>
-        <div class="ro-sub">optimized 3 → 30 · webcam motion tracking</div>
+        <div class="ro-stats">
+          <div class="ro-stat"><span class="rl">frametime</span><b><span id="ft">333</span><span class="ru">ms</span></b></div>
+          <div class="ro-stat"><span class="rl">tracked</span><b>7<span class="ru">/7 pts</span></b></div>
+        </div>
       </div>
     </div>
   </div>
@@ -564,6 +572,7 @@
   (function(){
     const cvs = document.getElementById('readout-cvs');
     const fpsEl = document.getElementById('fps');
+    const ftEl = document.getElementById('ft');
     if(!cvs || !cvs.getContext) return;
     const ctx = cvs.getContext('2d');
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -584,8 +593,8 @@
     const N = 7, pts = [];
     for(let i=0;i<N;i++){
       pts.push({
-        bx:.18 + .64*Math.random(), by:.24 + .58*Math.random(),
-        ax:.05 + .07*Math.random(), ay:.05 + .07*Math.random(),
+        bx:.16 + .68*Math.random(), by:.15 + .42*Math.random(),
+        ax:.05 + .06*Math.random(), ay:.04 + .055*Math.random(),
         sx:.3 + .5*Math.random(),  sy:.3 + .5*Math.random(),
         px:Math.random()*6.28,     py:Math.random()*6.28
       });
@@ -600,7 +609,10 @@
       const accent = dark ? '#f2582c' : '#e0481f';
       const teal = dark ? '#39c2b0' : '#1f9e8f';
       const grid = dark ? 'rgba(255,255,255,.045)' : 'rgba(20,30,50,.05)';
+      const tick = dark ? 'rgba(255,255,255,.13)' : 'rgba(20,30,50,.16)';
       const link = dark ? 'rgba(242,88,44,.32)' : 'rgba(224,72,31,.30)';
+      const roiC = dark ? 'rgba(154,163,173,.5)' : 'rgba(86,94,102,.55)';
+      const lbl  = dark ? 'rgba(154,163,173,.92)' : 'rgba(86,94,102,.95)';
 
       ctx.clearRect(0,0,W,H);
 
@@ -612,11 +624,39 @@
       for(let y=step; y<H; y+=step){ ctx.moveTo(0,y); ctx.lineTo(W,y); }
       ctx.stroke();
 
+      // ruler ticks along top and left edges (every 4th is longer)
+      ctx.strokeStyle = tick; ctx.lineWidth = 1;
+      ctx.beginPath();
+      let k = 0;
+      for(let x=step; x<W; x+=step){ const lg = (k++%4===0); ctx.moveTo(x,0); ctx.lineTo(x, lg?7:4); }
+      k = 0;
+      for(let y=step; y<H; y+=step){ const lg = (k++%4===0); ctx.moveTo(0,y); ctx.lineTo(lg?7:4, y); }
+      ctx.stroke();
+
       const t = reduce ? 0 : (now/1000);
       const P = pts.map(p => ({
         x:(p.bx + p.ax*Math.sin(t*p.sx + p.px))*W,
         y:(p.by + p.ay*Math.cos(t*p.sy + p.py))*H
       }));
+
+      // bounding box around the tracked cloud — reads as a tracking ROI
+      let minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9;
+      P.forEach(p=>{ if(p.x<minx)minx=p.x; if(p.y<miny)miny=p.y; if(p.x>maxx)maxx=p.x; if(p.y>maxy)maxy=p.y; });
+      const pad=15; minx-=pad; miny-=pad; maxx+=pad; maxy+=pad;
+      const bw=maxx-minx, bh=maxy-miny, br=8;
+      ctx.strokeStyle = roiC; ctx.lineWidth = 1; ctx.setLineDash([3,4]);
+      ctx.strokeRect(minx, miny, bw, bh);
+      ctx.setLineDash([]);
+      // accent corner brackets on the ROI
+      ctx.strokeStyle = accent; ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(minx,miny+br); ctx.lineTo(minx,miny); ctx.lineTo(minx+br,miny);
+      ctx.moveTo(maxx-br,miny); ctx.lineTo(maxx,miny); ctx.lineTo(maxx,miny+br);
+      ctx.moveTo(maxx,maxy-br); ctx.lineTo(maxx,maxy); ctx.lineTo(maxx-br,maxy);
+      ctx.moveTo(minx+br,maxy); ctx.lineTo(minx,maxy); ctx.lineTo(minx,maxy-br);
+      ctx.stroke();
+      ctx.fillStyle = lbl; ctx.font = '10px ui-monospace, monospace';
+      ctx.fillText('track_roi', minx, Math.max(11, miny-6));
 
       // connections between nearby points
       ctx.strokeStyle = link; ctx.lineWidth = 1.1;
@@ -634,21 +674,25 @@
         ctx.arc(p.x, p.y, 3.1, 0, 6.2832);
         ctx.fill();
       });
-      // crosshair on the lead point
+      // crosshair + live coordinate readout on the lead point
       const lead = P[0];
       ctx.strokeStyle = accent; ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(lead.x-9, lead.y); ctx.lineTo(lead.x+9, lead.y);
       ctx.moveTo(lead.x, lead.y-9); ctx.lineTo(lead.x, lead.y+9);
       ctx.stroke();
+      ctx.fillStyle = accent; ctx.font = '10px ui-monospace, monospace';
+      ctx.fillText(`${(lead.x/W).toFixed(2)}, ${(lead.y/H).toFixed(2)}`, lead.x+12, lead.y-7);
 
-      // fps value
+      // fps value + derived frametime
       const el = now - start;
       let v;
       if(reduce){ v = 30; }
       else if(el < rampMs){ v = 3 + 27*ease(el/rampMs); }
       else { v = (Math.sin(now/650) > .72) ? 29 : 30; }
-      fpsEl.textContent = Math.round(v);
+      const vr = Math.round(v);
+      fpsEl.textContent = vr;
+      if(ftEl) ftEl.textContent = Math.round(1000/Math.max(1,vr));
 
       if(!reduce) requestAnimationFrame(frame);
     }
